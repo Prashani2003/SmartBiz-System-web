@@ -1,36 +1,41 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Login from "../pages/Login";
+import Register from "../pages/Register";
 import Dashboard from "../pages/Dashboard";
 import Products from "../pages/Products";
 import Orders from "../pages/Orders";
-import AddProduct from "../pages/AddProduct";
-import CreateOrder from "../pages/CreateOrder";
-import Register from "../pages/Register";
+import Admin from "../pages/Admin";
 
-function AppRoutes() {
-  return (
-    <BrowserRouter>
-      <Routes>
+import MainLayout from "../layouts/MainLayout";
 
-        <Route path="/" element={<Login />} />
+function AppRoutes(){
 
-        <Route path="/register" element={<Register />} />
+ return(
 
-        <Route path="/dashboard" element={<Dashboard />} />
+  <BrowserRouter>
 
-        <Route path="/products" element={<Products />} />
+   <Routes>
 
-        <Route path="/orders" element={<Orders />} />
+    <Route path="/" element={<Login/>}/>
+    <Route path="/register" element={<Register/>}/>
 
-        <Route path="/add-product" element={<AddProduct />} />
+    <Route element={<MainLayout/>}>
 
-        <Route path="/create-order" element={<CreateOrder />} />
+     <Route path="/dashboard" element={<Dashboard/>}/>
+     <Route path="/products" element={<Products/>}/>
+     <Route path="/orders" element={<Orders/>}/>
 
+     <Route path="/admin" element={<Admin/>}/>
 
-      </Routes>
-    </BrowserRouter>
-  );
+    </Route>
+
+   </Routes>
+
+  </BrowserRouter>
+
+ )
+
 }
 
 export default AppRoutes;
