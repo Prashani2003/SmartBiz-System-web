@@ -1,90 +1,108 @@
-import {
- Container,
- Typography,
- Grid,
- Card,
- CardContent,
- Button
-} from "@mui/material";
+import { Container, Typography, Grid, Card, CardContent, Button } from "@mui/material";
 
-function Admin(){
+import { useNavigate } from "react-router-dom";
 
- return(
+function Admin() {
 
-  <Container sx={{marginTop:4}}>
+    const navigate = useNavigate();
 
-   <Typography variant="h4" gutterBottom>
-    Admin Panel
-   </Typography>
+    return (
+        <Container sx={{ mt: 4 }}>
 
-   <Grid container spacing={3}>
+            <Typography variant="h4" gutterBottom>
+                Admin Panel
+            </Typography>
 
-    <Grid item xs={12} md={4}>
-     <Card elevation={4} sx={{borderRadius:3}}>
-      <CardContent>
+            <Grid container spacing={3}>
 
-       <Typography variant="h6">
-        Manage Users
-       </Typography>
+                <Grid size={{ xs: 12, md: 4 }}>
+                    <Card sx={cardStyle}>
+                        <CardContent>
 
-       <Typography variant="body2" sx={{mb:2}}>
-        View and manage system users
-       </Typography>
+                            <Typography variant="h6" gutterBottom>
+                                Manage Users
+                            </Typography>
 
-       <Button variant="contained">
-        View Users
-       </Button>
+                            <Typography variant="body2" sx={{ mb: 2, color: "#94a3b8" }}>
+                                View and manage system users
+                            </Typography>
 
-      </CardContent>
-     </Card>
-    </Grid>
+                            <Button
+                                variant="contained"
+                                fullWidth
+                                onClick={() => navigate("/admin/users")}
+                            >
+                                View Users
+                            </Button>
 
-    <Grid item xs={12} md={4}>
-     <Card elevation={4} sx={{borderRadius:3}}>
-      <CardContent>
+                        </CardContent>
+                    </Card>
+                </Grid>
 
-       <Typography variant="h6">
-        Manage Products
-       </Typography>
+                <Grid size={{ xs: 12, md: 4 }}>
+                    <Card sx={cardStyle}>
+                        <CardContent>
 
-       <Typography variant="body2" sx={{mb:2}}>
-        Admin product control
-       </Typography>
+                            <Typography variant="h6" gutterBottom>
+                                Manage Products
+                            </Typography>
 
-       <Button variant="contained">
-        Manage
-       </Button>
+                            <Typography variant="body2" sx={{ mb: 2, color: "#94a3b8" }}>
+                                Admin product control
+                            </Typography>
 
-      </CardContent>
-     </Card>
-    </Grid>
+                            <Button
+                                variant="contained"
+                                fullWidth
+                                onClick={() => navigate("/admin/products")}
+                            >
+                                Manage
+                            </Button>
 
-    <Grid item xs={12} md={4}>
-     <Card elevation={4} sx={{borderRadius:3}}>
-      <CardContent>
+                        </CardContent>
+                    </Card>
+                </Grid>
 
-       <Typography variant="h6">
-        Reports
-       </Typography>
+                <Grid size={{ xs: 12, md: 4 }}>
+                    <Card sx={cardStyle}>
+                        <CardContent>
 
-       <Typography variant="body2" sx={{mb:2}}>
-        View business reports
-       </Typography>
+                            <Typography variant="h6" gutterBottom>
+                                Reports
+                            </Typography>
 
-       <Button variant="contained">
-        View Reports
-       </Button>
+                            <Typography variant="body2" sx={{ mb: 2, color: "#94a3b8" }}>
+                                View business reports
+                            </Typography>
 
-      </CardContent>
-     </Card>
-    </Grid>
+                            <Button
+                                variant="contained"
+                                fullWidth
+                                onClick={() => navigate("/admin/reports")}
+                            >
+                                View Reports
+                            </Button>
 
-   </Grid>
+                        </CardContent>
+                    </Card>
+                </Grid>
 
-  </Container>
+            </Grid>
 
- )
-
+        </Container>
+    );
 }
+
+const cardStyle = {
+    borderRadius: "16px",
+    background: "#1e293b",
+    color: "white",
+    boxShadow: "0 4px 20px rgba(0,0,0,0.3)",
+    transition: "0.3s",
+    "&:hover": {
+        transform: "translateY(-5px)",
+        boxShadow: "0 6px 25px rgba(0,0,0,0.5)"
+    }
+};
 
 export default Admin;

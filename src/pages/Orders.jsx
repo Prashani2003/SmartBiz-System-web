@@ -1,27 +1,15 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-import {
-  Container,
-  Typography,
-  Table,
-  TableHead,
-  TableRow,
-  TableCell,
-  TableBody,
-  Paper,
-  Button,
-  CircularProgress,
-  Chip,
-  Box
-} from "@mui/material";
+import { Container, Typography, Table, TableHead, TableRow, TableCell, TableBody, Paper, Button, CircularProgress, Chip, Box } from "@mui/material";
 
 function Orders() {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // 🔹 Fetch Orders
+  const navigate = useNavigate();
+
   const fetchOrders = async () => {
     try {
       const token = localStorage.getItem("token");
@@ -44,7 +32,6 @@ function Orders() {
     fetchOrders();
   }, []);
 
-  // 🔹 Status Chip Color
   const getStatusColor = (status) => {
     switch (status) {
       case "pending": return "warning";
@@ -96,22 +83,27 @@ function Orders() {
                       />
                     </TableCell>
                     <TableCell>{new Date(order.created_at).toLocaleDateString()}</TableCell>
+
                     <TableCell>
                       <Button
                         variant="outlined"
                         size="small"
                         sx={{ mr: 1 }}
+                        onClick={() => navigate(`/orders/${order.id}`)}
                       >
                         View
                       </Button>
+
                       <Button
                         variant="outlined"
                         size="small"
                         color="success"
+                        onClick={() => navigate(`/invoice/${order.id}`)}
                       >
                         Invoice
                       </Button>
                     </TableCell>
+
                   </TableRow>
                 ))
               ) : (

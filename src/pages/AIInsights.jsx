@@ -1,14 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import {
-  Container,
-  Typography,
-  TextField,
-  Button,
-  Paper,
-  Box,
-  CircularProgress
-} from "@mui/material";
+import { Container, Typography, TextField, Button, Paper, Box, CircularProgress } from "@mui/material";
 
 function AIInsights() {
   const [query, setQuery] = useState("");
@@ -21,15 +13,15 @@ function AIInsights() {
     setLoading(true);
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/ai-insights",
-        { query },
+        "http://localhost:5000/api/ai",
+        { question: query },
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`
           }
         }
       );
-      setResponse(res.data.response);
+      setResponse(res.data.answer);
     } catch (err) {
       console.error("AI query error:", err);
       setResponse("Error generating insights. Please try again.");

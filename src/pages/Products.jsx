@@ -1,23 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-import {
-  Container,
-  Typography,
-  Table,
-  TableHead,
-  TableRow,
-  TableCell,
-  TableBody,
-  Paper,
-  Button,
-  CircularProgress,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  TextField,
-  DialogActions
-} from "@mui/material";
+import { Container, Typography, Table, TableHead, TableRow, TableCell, TableBody, Paper, Button, CircularProgress, Dialog, DialogTitle, DialogContent, TextField, DialogActions } from "@mui/material";
 
 function Products() {
 
@@ -35,7 +19,6 @@ function Products() {
 
   const token = localStorage.getItem("token");
 
-  // 🔹 FETCH PRODUCTS
   const fetchProducts = async () => {
     try {
       const res = await axios.get("http://localhost:5000/api/products", {
@@ -53,7 +36,6 @@ function Products() {
     fetchProducts();
   }, []);
 
-  // 🔹 HANDLE INPUT
   const handleChange = (e) => {
     setForm({
       ...form,
@@ -61,14 +43,12 @@ function Products() {
     });
   };
 
-  // 🔹 OPEN MODAL (ADD)
   const handleOpenAdd = () => {
     setForm({ name: "", price: "", stock: "" });
     setEditingId(null);
     setOpen(true);
   };
 
-  // 🔹 OPEN MODAL (EDIT)
   const handleEdit = (p) => {
     setForm({
       name: p.name,
@@ -79,10 +59,8 @@ function Products() {
     setOpen(true);
   };
 
-  // 🔹 SAVE (ADD / UPDATE)
   const handleSave = async () => {
 
-    // ✅ VALIDATION
     if (!form.name || !form.price || !form.stock) {
       alert("All fields required");
       return;
@@ -90,14 +68,13 @@ function Products() {
 
     try {
       if (editingId) {
-        // UPDATE
+
         await axios.put(
           `http://localhost:5000/api/products/${editingId}`,
           form,
           { headers: { Authorization: `Bearer ${token}` } }
         );
       } else {
-        // CREATE
         await axios.post(
           "http://localhost:5000/api/products",
           form,
@@ -114,7 +91,6 @@ function Products() {
     }
   };
 
-  // 🔹 DELETE
   const handleDelete = async (id) => {
     try {
       await axios.delete(`http://localhost:5000/api/products/${id}`, {
@@ -135,7 +111,6 @@ function Products() {
         Products
       </Typography>
 
-      {/* ADD BUTTON */}
       <Button
         variant="contained"
         color="primary"
@@ -202,7 +177,6 @@ function Products() {
 
       </Paper>
 
-      {/* 🔥 MODAL */}
       <Dialog open={open} onClose={() => setOpen(false)}>
 
         <DialogTitle>
