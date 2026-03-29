@@ -31,6 +31,10 @@ function Sidebar(){
      <ListItemText primary="Orders"/>
     </ListItemButton>
 
+    <ListItemButton component={Link} to="/ai-insights">
+     <ListItemText primary="AI Insights"/>
+    </ListItemButton>
+
      <ListItemButton component={Link} to="/admin">
      <ListItemText primary="Admin"/>
      </ListItemButton>
