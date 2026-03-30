@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
 
-import { Dashboard, ShoppingCart, Inventory, SmartToy, Logout } from "@mui/icons-material";
+import { Dashboard, ShoppingCart, Inventory, SmartToy, Logout, Paid } from "@mui/icons-material";
 
 import { useNavigate, useLocation } from "react-router-dom";
 
@@ -13,6 +13,7 @@ function Sidebar() {
     { name: "Dashboard", icon: <Dashboard />, path: "/dashboard" },
     { name: "Orders", icon: <ShoppingCart />, path: "/orders" },
     { name: "Products", icon: <Inventory />, path: "/products" },
+    { name: "Expenses", icon: <Paid />, path: "/expenses" },
     { name: "AI Tools", icon: <SmartToy />, path: "/ai-insights" }
   ];
 

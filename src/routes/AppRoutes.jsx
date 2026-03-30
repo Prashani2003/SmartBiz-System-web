@@ -14,6 +14,8 @@ import Invoice from "../pages/Invoice";
 import Users from "../pages/Users";
 import AdminProducts from "../pages/AdminProducts";
 import Reports from "../pages/Reports";
+import Expenses from "../pages/Expenses";
+
 
 
 import MainLayout from "../layouts/MainLayout";
@@ -42,6 +44,7 @@ function AppRoutes() {
                     <Route path="/admin/users" element={<Users />} />
                     <Route path="/admin/products" element={<AdminProducts />} />
                     <Route path="/admin/reports" element={<Reports />} />
+                    <Route path="/expenses" element={<Expenses />} />
 
                     <Route path="/admin" element={<Admin />} />
 
